@@ -6,15 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>camera access</title>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 </head>
 
 <body>
-    <img id="imgDisplay" src="" height="100" width="100" />
-    <input type="file" name="image" id="img" accept="image/*" capture="environment">
+    <img id="imgDisplay" src="#" height="100" width="100" />
+    <input type="file" name="image" id="img" accept="image/*" capture="environment" onchange="readURL(this);">
     <script>
-        document.getElementById('img').onchange = function () {
-            document.getElementById('imgDisplay').src = img;
-        };
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgDisplay').attr('src', e.target.result).width(100).height(100);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 </body>
 
