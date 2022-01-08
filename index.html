@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>camera access</title>
 </head>
 
 <body>
-    <img src="" height="100" width="100" />
-    <input type="file" name="image" accept="image/*" capture="environment">
+    <img id="imgDisplay" src="" height="100" width="100" />
+    <input type="file" name="image" id="img" accept="image/*" capture="environment">
     <script>
-        function cameraAccess() {
-
-        }
+        document.getElementById('img').onchange = function () {
+            document.getElementById('imgDisplay').src = img;
+        };
     </script>
 </body>
 
